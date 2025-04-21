@@ -30,6 +30,22 @@
  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
   attribution: 'Tiles &copy; Esri'
 }).addTo(map);
+  fetch('data/provinces.geojson')
+  .then(res => res.json())
+  .then(data => {
+    L.geoJSON(data, {
+      style: {
+        color: '#3388ff',
+        weight: 1,
+        fillColor: '#66ccff',
+        fillOpacity: 0.4
+      },
+      onEachFeature: function (feature, layer) {
+        layer.bindPopup(`<b>${feature.properties.NAME_1}</b>`);
+      }
+    }).addTo(map);
+  });
+
 
 
   // Thêm 1 marker (ví dụ tại Hà Nội)
