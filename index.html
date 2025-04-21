@@ -26,12 +26,11 @@
 <script>
   // Khởi tạo bản đồ và đặt vị trí trung tâm (tọa độ Việt Nam)
   var map = L.map('map').setView([20.988847056674988, 105.79646497216743], 6);
+// Thêm lớp nền từ ESRI World
+ L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+  attribution: 'Tiles &copy; Esri'
+}).addTo(map);
 
-  // Thêm lớp nền từ OpenStreetMap
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '© OpenStreetMap contributors'
-  }).addTo(map);
 
   // Thêm 1 marker (ví dụ tại Hà Nội)
   var marker = L.marker([21.0285, 105.8544]).addTo(map);
